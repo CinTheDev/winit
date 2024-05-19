@@ -1510,7 +1510,7 @@ impl<T: 'static> EventProcessor<T> {
             if !xinput2::XIMaskIsSet(mask, i) {
                 continue;
             }
-            let x = unsafe { *value };
+            let x = unsafe { value.read_unaligned() };
 
             // We assume that every XInput2 device with analog axes is a pointing device emitting
             // relative coordinates.
